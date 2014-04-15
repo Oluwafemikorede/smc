@@ -200,8 +200,8 @@
   $(function()
   {
 
-     var user_email = localStorage.getItem("smc_email");
-     var userDetails = localStorage.getItem("userData");
+     var user_email = window.localStorage.getItem("smc_email");
+     var userDetails = window.localStorage.getItem("userData");
      var user_Details = JSON.parse(userDetails);
      console.log(user_Details.email);
     document.getElementById('username').innerHTML = user_Details.fname +'  '+ user_Details.lname;

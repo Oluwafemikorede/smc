@@ -134,9 +134,9 @@
         function( data ) {
             if(data.fname != '')
             {
-                localStorage.setItem("userData",JSON.stringify(data));
-                localStorage.setItem("smc_email",data.email);
-                localStorage.setItem("smc_password",data.password);
+                window.localStorage.setItem("userData",JSON.stringify(data));
+                window.localStorage.setItem("smc_email",data.email);
+                window.localStorage.setItem("smc_password",data.password);
                //window.sessionStorage.setItem('userDetails', data);
                 $.mobile.changePage("dashboard2.html");
             } else {
