@@ -56,16 +56,21 @@
 <div data-role="page" class="jqm-demos" data-quicklinks="true">
 
 	<div data-role="header" data-ajax="false">
-		<h1 class="h1_header">Student Mobile Reader </h1>
-		<!--<a href="../panel/" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">
-        Back</a>-->
-        
-        <a href="#leftpanel3" class="btn"><i class="fa fa-bars"></i> </a>
+		<a href="#leftpanel3" class="btn"><i class="fa fa-bars"></i> </a>
+    <h1 class="h1_header">Student Mobile Reader </h1>
+    <a href="#" data-rel="back" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">
+        Back</a>
 	</div><!-- /header -->
 <!--  <img src="img/devices.png" class="col-xs-12" />    -->
-<h4 class="ui-bar ui-bar-a" class="h1_header" style="color: #fff !important;">English</h4>
+<h4 class="ui-bar ui-bar-a" class="h1_header" style="color: #fff !important;">Yoruba</h4>
       <div class="ui-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.</p>
+      <h5><b>Ounka ni ile-Yoruba</b></h5>
+        <p>Dide eyin ara Wa jepe Naijiria, ka fife sinlee wa,
+        pelokun atigbagbo,
+        kise awon akoni wa,
+        ko ma se ja sasan,
+        ka sin tokan~tara,
+        Ile tominira,        alaafia so dokan</p>
       </div>
 
 
@@ -81,47 +86,48 @@
 	<!-- leftpanel3  -->
 	<div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-theme="a">
 
-        <h3 class="no-marg-top"><center><i class="fa fa-4x fa-user"></i></center></h3>
-        <h3 class="no-marg-top"></h3>
+        <h3 class="no-marg-top"><center><i class="fa fa-2x fa-user"></i></center></h3>
+        <center>
+          <h4 class="no-marg-top" id="username"></h4>
+        </center>
         
         
   <div class="jqm-navmenu-panel jqm-panel-page-nav">
-             <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview">    
+    <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview">    
   <li data-filtertext="demos homepage" data-icon="home" class="ui-first-child">
     <a href="studentboard.html" class="ui-btn ui-btn-icon-right ui-icon-home">
-    Dashboard
-    </a>
+    Dashboard    </a>
   </li>
   
- <!--  <li data-filtertext="introduction overview getting started">
-    <a href="library.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-    Library
-    </a>
-  </li> -->
-  
+ 
   <li data-filtertext="buttons button markup buttonmarkup method anchor link button element">
       <a href="assignment.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Assignment
       </a>
   </li>
   
-  <!-- <li data-filtertext="form button widget input button submit reset">
+  <li data-filtertext="form button widget input button submit reset">
       <a href="search.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
       Search
       </a>
-  </li> -->
+  </li>
  
    <li data-filtertext="form button widget input button submit reset">
       <a href="news.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
       News
       </a>
    </li>
+
+   <li data-filtertext="form button widget input button submit reset">
+      <a href="javascript:;" id="cloud" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+      Sync to Cloud <i class="icon-upload"></i>
+      </a>
+   </li>
 </ul>
           </div>        
         
-        <p>Student's Dahboard</p>
-        <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+        <p>Student Dashboard</p>
+        <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close Dashboard</a>
 
-	</div>
-
+  </div>
   </body>
 </html>

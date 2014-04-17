@@ -8,10 +8,12 @@
         
     <link rel="shortcut icon" href="img/logo.png"/>        
     <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script type="text/javascript" src="cordova.js"></script>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel="" "stylesheet">
+    <!-- 
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel="" "stylesheet"> -->
     <!-- Custom styles for this template -->
     
     <link href="css/core.css" rel="stylesheet">
@@ -20,7 +22,6 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="cordova.js"></script>
   </head>
 
   <body>
@@ -33,13 +34,6 @@
 
       <div data-role="header" data-ajax="false" data-position="fixed">
         <h1 class="h1_header">Student Mobile Companion</h1>
-        <!-- <a href="index.html" data-rel="back" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">
-        Back</a> -->
-        
-
-        <!-- <a href="index.html" data-rel="next" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-r">
-        Next</a> -->
-       <!--  <a href="#leftpanel3" class="btn"><i class="fa fa-bars"></i> </a> -->
     </div>
 
 
@@ -72,7 +66,7 @@
                     <i class='fa fa-exclamation-triangle'></i> 
                 </div> 
                 
-                <form data-ajax="false" method="post">
+               
                 	<label>Phone Number</label>
                     <input type="email" id="email" value="" name="u_phone" class="col-xs-12" required 
                     placeholder="Phone Number: 2348024916061" />
@@ -81,7 +75,7 @@
                     <input type="password" id="password" value="" name="u_passwd" class="col-xs-12" required placeholder="Password" />
                     
                     <button id="login">Login</button>
-                </form>
+                
                 
                <!-- <p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left" data-transition="pop" data-direction="reverse">Back to page "one"</a></p>-->
                
@@ -114,42 +108,44 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
     <script src="js/jquery.mobile-1.4.2.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         $('#login').click(function(event){
             event.preventDefault();
-          console.log('login clicked');
-        
+                 
           var apiUrl = "http://386softs.com/smc/api/";
           //var apiUrl = "http://localhost/smc/api/";
-
-
-        var email = $('#email').val();
-        var password = $('#password').val();
-         console.log(email);
+          var email = $('#email').val();
+          var password = $('#password').val();
+         
+         
      $.post( apiUrl+"login", 
         { phone: email, password: password }, 
         function( data ) {
-            if(data.fname != '')
+        
+         //console.log(data.error);
+            if(typeof(data.error) == "undefined" && data.error == null)
             {
                 window.localStorage.setItem("userData",JSON.stringify(data));
-                window.localStorage.setItem("smc_email",data.email);
-                window.localStorage.setItem("smc_password",data.password);
-               //window.sessionStorage.setItem('userDetails', data);
-                $.mobile.changePage("dashboard2.html");
-            } else {
-            if (navigator.notification) {
-                navigator.notification.alert('Login Fails, Incorrect match');
-            } else {
-               alert('Login Fails, Incorrect match');
+                if(data.category == 'Student')
+                {
+                  //console.log("Student");
+                  window.location = "studentboard.html";
+                } else {
+                  //console.log("Teacher");
+                  window.location = "teacherboard.html";
+                }
+                
+            } else if(data.error == 'true') {
+       
+              if (navigator.notification) 
+                  navigator.notification.alert('Login Fails, Incorrect match');
+              else 
+                 alert('Login Fails, Incorrect match');         
+               
             }
-                console.log( data); // John
-                console.log( data.lname ); // John
-            }
-      
-     //console.log( data.time ); // 2pm
     }, "json");
 
 

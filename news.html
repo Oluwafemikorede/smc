@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <title>Dashboard | SMC</title>
+    
+    <meta charset="utf-8" />
+            
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel="" "stylesheet">
+    <!-- Custom styles for this template -->
+    
+    <link href="css/core.css" rel="stylesheet">
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+	<script id="panel-init">
+	  $(function() {
+		  $( "body>[data-role='panel']" ).panel();
+	  });
+		
+	  $(function() {
+			$("#tabs").tabs();
+	  });
+	  
+	  $(function() {
+		$( "#tabs" ).tabs();
+	  });
+	  
+	  $('#myTab a').click(function (e) {
+		  e.preventDefault()
+		  $(this).tab('show')
+		})
+	  
+	</script>
+</head>
+<body>
+
+
+
+
+<div data-role="page" class="jqm-demos" data-quicklinks="true">
+
+	<div data-role="header" data-ajax="false">
+		<a href="#leftpanel3" class="btn"><i class="fa fa-bars"></i> </a>
+    <h1 class="h1_header">Student Mobile Reader </h1>
+    <a href="#" data-rel="back" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">
+        Back</a>
+	</div><!-- /header -->
+<!--  <img src="img/devices.png" class="col-xs-12" />    -->
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider" class="h1_header">Friday, March 8, 2014 <span class="ui-li-count">2</span></li>
+    <li><a >
+    <h2>Entrance Examination Cancelled</h2>
+     <p><strong>Author: Aderele Sesan</strong></p>
+    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
+        <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+    </a></li>
+    <li><a>
+    <h2>Government sponsors 12 pupils </h2>
+    <p><strong>Author: Aderele Sesan</strong></p>
+    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
+        <p class="ui-li-aside"><strong>9:18</strong>AM</p>
+    </a></li>
+    <li data-role="list-divider" class="h1_header">Thursday, October 7, 2014 <span class="ui-li-count">1</span></li>
+    <li><a>
+    <h2>SSCE Exam</h2>
+    <p><strong>Author: Aderele Sesan</strong></p>
+    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
+        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
+    </a></li>
+</ul>
+
+
+      <div data-role="footer"  data-tap-toggle="false" 
+      class="jqm-footer" data-position="fixed"
+      style="border-color: #FFF; color: #FFF;">
+         
+    <h4  class="h1_header" >&copy; Copyright 2014 SMC</h4>
+  </div>
+      
+</div><!-- /page -->
+
+	<!-- leftpanel3  -->
+	<div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-theme="a">
+
+        <h3 class="no-marg-top"><center><i class="fa fa-2x fa-user"></i></center></h3>
+        <center>
+          <h4 class="no-marg-top" id="username"></h4>
+        </center>
+        
+        
+  <div class="jqm-navmenu-panel jqm-panel-page-nav">
+    <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview">    
+  <li data-filtertext="demos homepage" data-icon="home" class="ui-first-child">
+    <a href="studentboard.html" class="ui-btn ui-btn-icon-right ui-icon-home">
+    Dashboard    </a>
+  </li>
+  
+ 
+  <li data-filtertext="buttons button markup buttonmarkup method anchor link button element">
+      <a href="assignment.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Assignment
+      </a>
+  </li>
+  
+ <!--  <li data-filtertext="form button widget input button submit reset">
+      <a href="search.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+      Search
+      </a>
+  </li> -->
+ 
+   <li data-filtertext="form button widget input button submit reset">
+      <a href="news.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+      News
+      </a>
+   </li>
+
+   <li data-filtertext="form button widget input button submit reset">
+      <a href="javascript:;" id="cloud" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+      Sync to Cloud <i class="icon-upload"></i>
+      </a>
+   </li>
+</ul>
+          </div>        
+        
+        <p>Student Dashboard</p>
+        <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close Dashboard</a>
+
+  </div>
+ <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mobile-1.4.2.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+      var userDetails = localStorage.getItem("userData");
+     var user_Details = JSON.parse(userDetails);
+    
+    document.getElementById('username').innerHTML = user_Details.fname +'  '+ user_Details.lname;
+
+      var apiUrl = "http://386softs.com/smc/api/";
+      //var apiUrl = "http://localhost/smc/api/";
+     $.get( apiUrl+"schools", function( data ) {
+        $.each(data, function( key, value ) {
+            //console.log(value.school);
+           $( "#school" ).append( "<option value='"+ value.id +"'>"+ value.school +"</option>" );
+            });
+    }, "json");
+
+
+     $.get( apiUrl+"subjects", function( data ) {
+        $.each(data, function( key, value ) {
+            //console.log(value.school);
+           $( "#subject" ).append( "<option value='"+ value.id +"'>"+ value.subject +"</option>" );
+            });
+    }, "json");
+
+
+      $.get( apiUrl+"class", function( data ) {
+        $.each(data, function( key, value ) {
+           // console.log(value.class);
+           $( "#class" ).append( "<option value='"+ value.id +"'>"+ value.class +"</option>" );
+            });
+    }, "json");
+
+
+
+                  $('#register').click(function(event){
+                    event.preventDefault();
+                  var school_id = $('#school').val();
+                  var class_id = $('#class').val();
+                  var subject_id = $('#subject').val();
+                  var user_category = $('#category').val();
+                  var phone = $('#phone').val();
+                  var first_name = $('#first_name').val();
+                  var last_name = $('#last_name').val();
+                  var password = $('#password').val();
+                  var password2 = $('#password2').val();
+
+                    $.post( apiUrl+"register", 
+                    { fname: first_name, 
+                      lname: last_name, 
+                      user_type: user_category, 
+                      school_id: school_id, 
+                      subject_id: subject_id,
+                      class_id: class_id, 
+                      phone: phone, 
+                      password: password, 
+                      password2: password2 }, 
+                    function( data ) 
+                    {
+                        console.log(data.success);
+                        if(data.success == 'true')
+                        {
+                          //  $.mobile.changePage("index.html");
+                        } else {
+                          //  $.mobile.changePage("dashboard.html");
+                        }
+              
+                            //console.log( data.time ); // 2pm
+                    }, "json");
+
+            });
+    });
+   
+
+</script>
+  </body>
+</html>
