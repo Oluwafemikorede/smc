@@ -20,20 +20,7 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-    <script id="panel-init">
-   $(document).ready(function()
-   {
-      $( "body>[data-role='panel']" ).panel();
-
-      $("#tabs").tabs();
-
-
-        $('#myTab a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        });
-    });
-  </script>
+   
   </head>
 
   <body>
@@ -200,8 +187,7 @@ data-position="left" data-display="overlay" data-theme="a">
       var class_id = userDetails.class_id;
 
   document.getElementById('username').innerHTML = userDetails.fname +' '+ userDetails.lname;
-  document.getElementById('teacher').innerHTML = userDetails.fname +' '+ userDetails.lname;
-
+ 
     
                   $('#create').click(function(event){
                     event.preventDefault();
@@ -256,5 +242,19 @@ data-position="left" data-display="overlay" data-theme="a">
    
 
 </script>
+ <script id="panel-init">
+   $(document).ready(function()
+   {
+      $( "body>[data-role='panel']" ).panel();
+
+      $("#tabs").tabs();
+
+
+        $('#myTab a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        });
+    });
+  </script>
   </body>
 </html>

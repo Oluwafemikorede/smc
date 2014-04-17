@@ -162,7 +162,7 @@ data-position="left" data-display="overlay" data-theme="a">
     $(document).ready(function(){
         //$('#leftpanel3').load('teacher-sidebar.html');
      var apiUrl = "http://386softs.com/smc/api/";
-      //var apiUrl = "http://localhost/smc/api/";
+     // var apiUrl = "http://localhost/smc/api/";
       var user_Details = window.localStorage.getItem("userData");
       var userDetails = JSON.parse(user_Details);
      var teacher_id = userDetails.id;
@@ -170,7 +170,7 @@ data-position="left" data-display="overlay" data-theme="a">
       var class_id = userDetails.class_id;
 
   document.getElementById('username').innerHTML = userDetails.fname +' '+ userDetails.lname;
-  document.getElementById('teacher').innerHTML = userDetails.fname +' '+ userDetails.lname;
+//  document.getElementById('teacher').innerHTML = userDetails.fname +' '+ userDetails.lname;
 
       
     
