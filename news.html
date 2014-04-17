@@ -57,33 +57,16 @@
 
 	<div data-role="header" data-ajax="false">
 		<a href="#leftpanel3" class="btn"><i class="fa fa-bars"></i> </a>
-    <h1 class="h1_header">Student Mobile Reader </h1>
+    <h1 class="h1_header">SMC | News </h1>
     <a href="#" data-rel="back" class="ui-btn ui-btn-right ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">
         Back</a>
 	</div><!-- /header -->
 <!--  <img src="img/devices.png" class="col-xs-12" />    -->
-<ul data-role="listview" data-inset="true">
-    <li data-role="list-divider" class="h1_header">Friday, March 8, 2014 <span class="ui-li-count">2</span></li>
-    <li><a >
-    <h2>Entrance Examination Cancelled</h2>
-     <p><strong>Author: Aderele Sesan</strong></p>
-    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
-        <p class="ui-li-aside"><strong>6:24</strong>PM</p>
-    </a></li>
-    <li><a>
-    <h2>Government sponsors 12 pupils </h2>
-    <p><strong>Author: Aderele Sesan</strong></p>
-    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
-        <p class="ui-li-aside"><strong>9:18</strong>AM</p>
-    </a></li>
-    <li data-role="list-divider" class="h1_header">Thursday, October 7, 2014 <span class="ui-li-count">1</span></li>
-    <li><a>
-    <h2>SSCE Exam</h2>
-    <p><strong>Author: Aderele Sesan</strong></p>
-    <p>The State government has decided to sponsor 54 pupils in this year's ssce exam as part of its plan to...</p>
-        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
-    </a></li>
-</ul>
+<ul data-role="listview" data-inset="true" id="lnews">
+    <li data-role="list-divider" class="h1_header" id="currentDate">Friday, March 8, 2014 </li>
+
+    </ul>
+  
 
 
       <div data-role="footer"  data-tap-toggle="false" 
@@ -110,19 +93,10 @@
     <a href="studentboard.html" class="ui-btn ui-btn-icon-right ui-icon-home">
     Dashboard    </a>
   </li>
-  
- 
   <li data-filtertext="buttons button markup buttonmarkup method anchor link button element">
       <a href="assignment.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Assignment
       </a>
-  </li>
-  
- <!--  <li data-filtertext="form button widget input button submit reset">
-      <a href="search.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-      Search
-      </a>
-  </li> -->
- 
+  </li> 
    <li data-filtertext="form button widget input button submit reset">
       <a href="news.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
       News
@@ -147,74 +121,29 @@
     <script type="text/javascript">
     $(document).ready(function(){
 
+var dNow = new Date();
+var localdate= (dNow.getMonth()+1) + '/' + dNow.getDate() + '/' + dNow.getFullYear() + ' ' + dNow.getHours() + ':' + dNow.getMinutes();
+$('#currentDate').text(localdate);
+
+
+
+
       var userDetails = localStorage.getItem("userData");
      var user_Details = JSON.parse(userDetails);
     
     document.getElementById('username').innerHTML = user_Details.fname +'  '+ user_Details.lname;
 
-      var apiUrl = "http://386softs.com/smc/api/";
-      //var apiUrl = "http://localhost/smc/api/";
-     $.get( apiUrl+"schools", function( data ) {
+      var apiUrl = "http://386softs.com/smc/api/news/";
+      //var apiUrl = "http://localhost/smc/api/news/";
+ 
+     $.get( apiUrl+user_Details.class_id, function( data ) {
         $.each(data, function( key, value ) {
-            //console.log(value.school);
-           $( "#school" ).append( "<option value='"+ value.id +"'>"+ value.school +"</option>" );
+            console.log(value.title);
+            var body = "<li class='ui-li-static ui-body-inherit ui-last-child'><h2 style='text-transform:capitalize;'>"+ value.title +"</h2><p><strong>Author: Aderele Sesan</strong></p><p>"+ value.content +"</p></li>";
+           $( '#lnews' ).append( body );
             });
-    }, "json");
-
-
-     $.get( apiUrl+"subjects", function( data ) {
-        $.each(data, function( key, value ) {
-            //console.log(value.school);
-           $( "#subject" ).append( "<option value='"+ value.id +"'>"+ value.subject +"</option>" );
-            });
-    }, "json");
-
-
-      $.get( apiUrl+"class", function( data ) {
-        $.each(data, function( key, value ) {
-           // console.log(value.class);
-           $( "#class" ).append( "<option value='"+ value.id +"'>"+ value.class +"</option>" );
-            });
-    }, "json");
-
-
-
-                  $('#register').click(function(event){
-                    event.preventDefault();
-                  var school_id = $('#school').val();
-                  var class_id = $('#class').val();
-                  var subject_id = $('#subject').val();
-                  var user_category = $('#category').val();
-                  var phone = $('#phone').val();
-                  var first_name = $('#first_name').val();
-                  var last_name = $('#last_name').val();
-                  var password = $('#password').val();
-                  var password2 = $('#password2').val();
-
-                    $.post( apiUrl+"register", 
-                    { fname: first_name, 
-                      lname: last_name, 
-                      user_type: user_category, 
-                      school_id: school_id, 
-                      subject_id: subject_id,
-                      class_id: class_id, 
-                      phone: phone, 
-                      password: password, 
-                      password2: password2 }, 
-                    function( data ) 
-                    {
-                        console.log(data.success);
-                        if(data.success == 'true')
-                        {
-                          //  $.mobile.changePage("index.html");
-                        } else {
-                          //  $.mobile.changePage("dashboard.html");
-                        }
-              
-                            //console.log( data.time ); // 2pm
-                    }, "json");
-
-            });
+        }, "json");
+                 
     });
    
 

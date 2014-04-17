@@ -33,51 +33,17 @@
         Back</a>
         
     </div>    
-
-   
-  	     	
-         
-            
-        
             <div role="main" class="ui-content">
-                <!--<h2 class="no-marg-top">Login</h2>-->
-                <!-- <h2 class="no-marg-top"><center><i class="fa fa-3x fa-user"></i></center>
-                </h2> -->
-                
-                <!-- <div class="alert alert-warning"></div> -->
+            
                 <div class='alert alert-warning' style="display: none" id="error">
                 </div> 
 
 
-                <form data-ajax="false" method="post">              
-                  <label for="textarea-1"><b>Question:</b></label>
-                  <p>What is a right angle triangle</p>
-
-                    <fieldset data-role="controlgroup">
-                      <!--   <legend>Options:</legend> -->
-                        <input type="radio" 
-                        name="radio-choice-v-1" id="radio-choice-v-1a" value="on" checked="checked">
-                        <label for="radio-choice-v-1a">A triangle containing a right angle is called a right triangle</label>
-                        <input type="radio" 
-                        name="radio-choice-v-1" id="radio-choice-v-1b" value="off">
-                        <label for="radio-choice-v-1b">A triangle having all sides equal is called a right triangle</label>
-                        <input type="radio" 
-                        name="radio-choice-v-1" id="radio-choice-v-1c" value="other">
-                        <label for="radio-choice-v-1c">A shape with four angles is called a right triangle</label>
-
-                        <input type="radio" 
-                        name="radio-choice-v-1" id="radio-choice-v-1d" value="other">
-                        <label for="radio-choice-v-1d">A shape with five angles is called a right triangle</label>
-
-                    </fieldset>
-
-                    
-                    
+               <div id="assign">              
+                                
+                    </div>
                     <button id="register">Submit</button>
-                </form>
-                
-               <!-- <p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left" data-transition="pop" data-direction="reverse">Back to page "one"</a></p>-->
-               
+                            
             </div><!-- /content -->
         
             <!-- /footer -->
@@ -102,23 +68,14 @@
   <li data-filtertext="buttons button markup buttonmarkup method anchor link button element">
       <a href="assignment.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Assignment
       </a>
-  </li>
-  
- <!--  <li data-filtertext="form button widget input button submit reset">
-      <a href="search.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-      Search
-      </a>
-  </li> -->
- 
+  </li> 
    <li data-filtertext="form button widget input button submit reset">
       <a href="news.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
       News
       </a>
    </li>
-
    <li data-filtertext="form button widget input button submit reset">
-      <a href="javascript:;" id="cloud" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-      Sync to Cloud <i class="icon-upload"></i>
+      <a href="javascript:;" id="cloud" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r"> Sync to Cloud <i class="icon-upload"></i>
       </a>
    </li>
 </ul>
@@ -144,12 +101,6 @@
 
   </div>
 
-
-      <!-- <footer data-role="footer" data-tap-toggle="false" class="jqm-footer">
-         &copy; Copyright 2014 SMC
-      </footer> -->
-
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -164,69 +115,17 @@
     
     document.getElementById('username').innerHTML = user_Details.fname +'  '+ user_Details.lname;
 
-      var apiUrl = "http://386softs.com/smc/api/";
-      //var apiUrl = "http://localhost/smc/api/";
-     $.get( apiUrl+"schools", function( data ) {
+      var apiUrl = "http://386softs.com/smc/api/assignments/";
+      //var apiUrl = "http://localhost/smc/api/assignments/";
+     $.get( apiUrl+user_Details.class_id, function( data ) {
+
         $.each(data, function( key, value ) {
-            //console.log(value.school);
-           $( "#school" ).append( "<option value='"+ value.id +"'>"+ value.school +"</option>" );
+          console.log(value.title);
+            var bod1 = "<label><b>Question</b>:" + value.id +"</label><p style='text-transform:capitalize;'>"+value.question+"</p><fieldset data-role='controlgroup' class='ui-controlgroup ui-controlgroup-vertical ui-corner-all'><div class='ui-controlgroup-controls'><div class='ui-radio'><input type='radio' name='radio-choice-v-1' id='"+value.id+"a' value='on'><label for='"+value.id+"a' class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-first-child'>"+value.option_a+"</label></div><div class='ui-radio'><input type='radio' name='radio-choice-v-1' id='"+value.id+"b' value='off'><label for='"+value.id+"b' class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off'>"+value.option_b+"</label></div><div class='ui-radio'><input type='radio' name='radio-choice-v-1' id='"+value.id+"c' value='other'><label for='"+value.id+"c' class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off'>"+value.option_c+"</label></div><div class='ui-radio'><input type='radio' name='radio-choice-v-1' id='"+value.id+"d' value=''><label for='"+value.id+"d' class='ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-last-child'>"+value.option_d+"</label></div></div></fieldset>";
+           $( "#assign" ).append( bod1 );
             });
     }, "json");
 
-
-     $.get( apiUrl+"subjects", function( data ) {
-        $.each(data, function( key, value ) {
-            //console.log(value.school);
-           $( "#subject" ).append( "<option value='"+ value.id +"'>"+ value.subject +"</option>" );
-            });
-    }, "json");
-
-
-      $.get( apiUrl+"class", function( data ) {
-        $.each(data, function( key, value ) {
-           // console.log(value.class);
-           $( "#class" ).append( "<option value='"+ value.id +"'>"+ value.class +"</option>" );
-            });
-    }, "json");
-
-
-
-                  $('#register').click(function(event){
-                    event.preventDefault();
-                  var school_id = $('#school').val();
-                  var class_id = $('#class').val();
-                  var subject_id = $('#subject').val();
-                  var user_category = $('#category').val();
-                  var phone = $('#phone').val();
-                  var first_name = $('#first_name').val();
-                  var last_name = $('#last_name').val();
-                  var password = $('#password').val();
-                  var password2 = $('#password2').val();
-
-                    $.post( apiUrl+"register", 
-                    { fname: first_name, 
-                      lname: last_name, 
-                      user_type: user_category, 
-                      school_id: school_id, 
-                      subject_id: subject_id,
-                      class_id: class_id, 
-                      phone: phone, 
-                      password: password, 
-                      password2: password2 }, 
-                    function( data ) 
-                    {
-                        console.log(data.success);
-                        if(data.success == 'true')
-                        {
-                            $.mobile.changePage("index.html");
-                        } else {
-                            $.mobile.changePage("dashboard.html");
-                        }
-              
-                            //console.log( data.time ); // 2pm
-                    }, "json");
-
-            });
     });
    
 
